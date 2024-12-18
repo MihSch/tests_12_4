@@ -56,27 +56,26 @@ class RunnerTest(unittest.TestCase):
     def test_walk(self):
         name = Runner('John', speed=-1)
         try:
-            logging.INFO('"test_walk" выполнен успешно')
+            logging.info('"test_walk" выполнен успешно', exc_info=True)
             for i in range(10):
                 name.walk()
             self.assertEqual(name.distance, 50)
         except ValueError:
-            logging.WARNING("Неверная скорость для Runner", exc_info=True)
+            logging.warning("Неверная скорость для Runner", exc_info=True)
 
 
     def test_run(self):
         n = Runner(name=1)
         try:
-            logging.INFO('"test_run" выполнен успешно')
+            logging.info('"test_run" выполнен успешно', exc_info=True)
             for i in range (10):
                 n.run()
             self.assertEqual(n.distance, 10)
         except TypeError:
-            logging.WARNING("Неверный тип данных для объекта Runner", exc_info=True)
+            logging.warning("Неверный тип данных для объекта Runner", exc_info=True)
 
 
 
 if __name__ == "__main__":
-    unittest.main()
     logging.basicConfig(level=logging.INFO, filemode='w', filename='runner_tests.log',
-                        encoding = "UTF-8", format="%(asctime)s - %(levelname)s - %(message)s")
+                        encoding="UTF-8", format="%(asctime)s - %(levelname)s - %(message)s")
